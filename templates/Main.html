@@ -8,7 +8,7 @@
 <div class="w3-container" style="background-color:#C29393">
 
   <div class="w3-display-container" style="height:100px;color:#FEE9E9">
-      <div class="w3-display-left"><h1>Trader</h1></div>
+      <div class="w3-display-left"><h1><a href="/">Trader</a></h1></div>
     <div class="w3-display-right">
         <a href="/balance">Portfolio</a>
     </div>
@@ -32,29 +32,18 @@
       <th class="w3-bottombar">Change percent in 24h</th>
       <th class="w3-bottombar">Rank</th>
     </tr>
+    {% for el in currencies["data"] %}
     <tr>
-      <td>Etherium</td>
-      <td>ETH</td>
-      <td>2000$</td>
-      <td>3%</td>
-      <td>3</td>
+      <td>
+          <a href="/graph/{{ el["name"]}}">{{ el["name"]}}</a>
+      </td>
+      <td>{{ el["symbol"] }}</td>
+      <td>{{ el["priceUsd"] }}</td>
+      <td>{{ el["changePercent24Hr"] }}</td>
+      <td>{{ el["rank"] }}</td>
 
     </tr>
-    <tr>
-      <td>Bitcoin</td>
-      <td>BTC</td>
-      <td>56312$</td>
-      <td>14%</td>
-      <td>2</td>
-
-    </tr>
-    <tr>
-      <td>LETIcoin</td>
-      <td>LTC</td>
-      <td>12$</td>
-      <td>0%</td>
-      <td>1</td>
-    </tr>
+    {% endfor %}
   </table>
 </div>
 

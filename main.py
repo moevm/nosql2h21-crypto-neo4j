@@ -9,10 +9,15 @@ api = API()
 
 @app.route('/')
 def main():
-    response = api.get_currencies()
+    currencies = api.get_currencies()
 
-    return response
-    # return render_template(".html")
+    return render_template("Main.html", currencies=currencies)
+
+
+@app.route('/graph/<string:id>')
+def graph(id):
+
+    return render_template("Trends.html", id=id)
 
 
 @app.route('/balance')
