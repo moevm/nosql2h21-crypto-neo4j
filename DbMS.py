@@ -2,7 +2,7 @@ from neo4j import GraphDatabase
 
 
 class DbMS:
-    def __init__(self, uri, user, password):
+    def __init__(self, uri="bolt://localhost:7687", user="neo4j", password="password"):
         self.driver = GraphDatabase.driver(uri, auth=(user, password))
 
     def __del__(self):

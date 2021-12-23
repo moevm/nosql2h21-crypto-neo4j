@@ -1,9 +1,18 @@
 from flask import Flask, render_template, request
 from DbMS import DbMS
-
+from api import API
 
 app = Flask(__name__)
-# db = DbMS("bolt://localhost:7687", "neo4j", "password")
+# db = DbMS()
+api = API()
+
+
+@app.route('/')
+def main():
+    response = api.get_currencies()
+
+    return response
+    # return render_template(".html")
 
 
 @app.route('/balance')
