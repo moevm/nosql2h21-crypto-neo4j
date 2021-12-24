@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS</title>
+<title>CryptoList</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<body style="background-color:#E5E5E5">
+<body style="background-color:#FEE9E9">
 
  <div class="w3-container" style="background-color:#C29393;">
     <div class="w3-display-container" style="height:73px; color: #FEE9E9">
@@ -21,7 +22,7 @@
   </div>
 
 <div class="w3-panel">
-  <h1>Current market state</h1>
+  <h1>Рынок на текущий момент</h1>
 </div>
 <form class="w3-container">
   <input class="w3-input w3-border w3-animate-input" type="text" style="width:30%" placeholder="Type currency" >
@@ -31,11 +32,11 @@
 
   <table class="w3-table w3-bordered w3-centered">
     <tr>
-      <th class="w3-bottombar">Crypto-currency</th>
-      <th class="w3-bottombar">Symbol</th>
-      <th class="w3-bottombar">Price in USD</th>
-      <th class="w3-bottombar">Change percent in 24h</th>
-      <th class="w3-bottombar">Rank</th>
+      <th class="w3-bottombar">Валюта</th>
+      <th class="w3-bottombar">Обозначение</th>
+      <th class="w3-bottombar">Цена(USD)</th>
+      <th class="w3-bottombar">Изм.(24ч)</th>
+      <th class="w3-bottombar">Ранг</th>
     </tr>
     {% for el in currencies["data"] %}
     <tr>
