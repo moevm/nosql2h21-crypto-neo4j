@@ -13,6 +13,10 @@ class DbMS:
         query = ""
         return self._make_query(query)
 
+    def export_data(self):
+        query = "MATCH (n) RETURN n"
+        return self._make_query(query)
+
     def get_history(self, name):
         query = "MATCH (n:Client {name: \'" \
                 + name \

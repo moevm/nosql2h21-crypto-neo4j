@@ -4,7 +4,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" type="text/css" href="style.css">
 <body style="background-color: #FEE9E9">
 
   <div class="w3-container" style="background-color:#C29393;">
@@ -58,7 +57,7 @@
 
    <div>
      <form action="/balance" method="post" enctype="multipart/form-data">
-      <div style="float: right; margin-right: 100px;">
+      <div style="float: right; margin-right: 100px;" align="center">
         <h3 style="font-weight: bold">Import</h3>
         <input type="file" accept=".json" name="upload" id="upload" hidden/>
         <label style="display: inline-block;background-color: #C29393; color: #FEE9E9;
@@ -67,19 +66,12 @@
         <input type="submit" value="Submit" style="display: inline-block ;background-color: #C29393; color: #FEE9E9;
           font-family: sans-serif Verdana; cursor: pointer;">
       </div>
-    </form>
-
-    <form action="/balance" method="post">
-      <div style="float: right; margin-right: 100px;">
-        <h3 style="font-weight: bold">Export</h3>
-        <input type="file" id="export" hidden/>
-        <label style="display: inline-block;background-color: #C29393; color: #FEE9E9;
-          font-family: sans-serif Verdana; cursor: pointer; padding-top: 10px; padding: 8px 16px;" for="export">Choose file</label>
-         <p></p>
-        <input type="submit" value="Submit" style="display: inline-block ;background-color: #C29393; color: #FEE9E9;
-          font-family: sans-serif Verdana; cursor: pointer;">
-      </div>
-    </form>
+     </form>
+       <div style="float: right; margin-right: 25px" align="center">
+           <h3 style="font-weight: bold">Export</h3>
+           <a href="main.py" style="float: right; display: inline-block;background-color: #C29393; color: #FEE9E9;
+          font-family: sans-serif Verdana; cursor: pointer; padding-top: 10px; padding: 8px 16px;" download>Download</a>
+       </div>
    </div>
 
 </div>
