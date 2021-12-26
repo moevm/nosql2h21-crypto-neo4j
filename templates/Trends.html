@@ -22,13 +22,13 @@
   </div>
 
 <div class="w3-display-container" style="height:70px">
-  <div class="w3-display-middle"><h1 style="font-size:50px">График изменения валюты {{ id }}</h1></div>
+  <div class="w3-display-middle"><h1 style="font-size:50px">{{ curr["data"]["name"] }} {{ curr["data"]["priceUsd"] }}</h1></div>
 </div>
 
 <div class="w3-row">
     <div class="w3-container w3-third">
 
-    <form class="w3-container w3-card-4" action="/action_page.php" style="margin-top: 30px">
+    <form class="w3-container w3-card-4" method="post" style="margin-top: 30px">
         <h1>Форма ввода</h1>
         <div class="w3-bar">
           <div class="w3-dropdown-hover">
@@ -40,8 +40,8 @@
           </div>
       </div>
         <p><input class="w3-input w3-border" name="amount" type="text" placeholder="Type in amount to buy/sell"></p>
-        <button class="w3-btn" style="background-color:#C29393; margin-right: 10px; color: #FEE9E9">Buy</button>
-        <button class="w3-btn" style="background-color:#C29393; color: #FEE9E9">Sell</button>
+        <input type="submit" name="Buy" value="Купить" class="w3-btn" style="background-color:#C29393; margin-right: 10px; color: #FEE9E9">
+        <input type="submit" name="Sell" value="Продать" class="w3-btn" style="background-color:#C29393; color: #FEE9E9">
         <p></p>
     </form>
 

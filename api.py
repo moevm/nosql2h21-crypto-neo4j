@@ -10,10 +10,11 @@ class API:
 
     def get_currencies(self):
         response = self.get("/assets")
-        if response.status_code != 200:
-            return {}
+        return response
 
-        return json.loads(response.text)
+    def get_currency_by_id(self, id):
+        response = self.get(f"/assets/{id}")
+        return response
 
     def get(self, query):
         url = self.url + query
@@ -25,4 +26,8 @@ class API:
             time.sleep(0.5)
             response = requests.request("GET", url, headers=self.headers)
             times += 1
-        return response
+
+        if response.status_code != 200:
+            return {}
+
+        return json.loads(response.text)
