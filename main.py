@@ -3,8 +3,11 @@ from DbMS import DbMS
 from api import API
 
 app = Flask(__name__)
-# db = DbMS()
+db = DbMS()
 api = API()
+
+# Временная тема
+name = "Sergey"
 
 
 @app.route('/')
@@ -22,16 +25,13 @@ def graph(id):
 
 @app.route('/balance')
 def balance():
-    # res = db.greeting("hello, world")
-    # return res
     return render_template("balance.html")
 
 
 @app.route('/history')
 def history():
-    # res = db.greeting("hello, world")
-    # return res
-    return render_template("History.html")
+    operations = db.get_history(name)
+    return render_template("History.html", operations=operations)
 
 
 if __name__ == '__main__':

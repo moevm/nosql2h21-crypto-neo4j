@@ -38,29 +38,15 @@
       <th class="w3-bottombar">Дата</th>
       <th class="w3-bottombar">Курс</th>
     </tr>
+    {% for el in operations %}
     <tr>
-      <td>Buy</td>
-      <td>Etherium</td>
-      <td>0.11123</td>
-      <td>23/12/2021</td>
-      <td>2000$</td>
-
+      <td>{{ el['r.type'] }}</td>
+      <td>{{ el['m.name'] }}</td>
+      <td>{{ el['r.count'] }}</td>
+      <td>{{ el['r.date'] }}</td>
+      <td>{{ el['r.price'] }}</td>
     </tr>
-    <tr>
-      <td>Sell</td>
-      <td>Bitcoin</td>
-      <td>2.1324</td>
-      <td>23/12/2021</td>
-      <td>56312$</td>
-
-    </tr>
-    <tr>
-      <td>Buy</td>
-      <td>Leticoin</td>
-      <td>0.55</td>
-      <td>23/12/2021</td>
-      <td>12$</td>
-    </tr>
+    {% endfor %}
   </table>
 </div>
 
