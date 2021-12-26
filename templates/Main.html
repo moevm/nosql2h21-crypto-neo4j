@@ -25,12 +25,12 @@
   <h1>Рынок на текущий момент</h1>
 </div>
 <form class="w3-container">
-  <input class="w3-input w3-border w3-animate-input" type="text" style="width:30%" placeholder="Type currency" >
+  <input id="search_input" class="w3-input w3-border w3-animate-input" type="text" style="width:30%" placeholder="Type currency" >
 </form>
 
 <div class="w3-container">
 
-  <table class="w3-table w3-bordered w3-centered">
+  <table id="place_for_operations" class="w3-table w3-bordered w3-centered">
     <tr>
       <th class="w3-bottombar">Валюта</th>
       <th class="w3-bottombar">Обозначение</th>
@@ -38,20 +38,43 @@
       <th class="w3-bottombar">Изм.(24ч)</th>
       <th class="w3-bottombar">Ранг</th>
     </tr>
-    {% for el in currencies["data"] %}
-    <tr>
-      <td>
-          <a href="/graph/{{ el["id"]}}">{{ el["name"]}}</a>
-      </td>
-      <td>{{ el["symbol"] }}</td>
-      <td>{{ el["priceUsd"] }}</td>
-      <td>{{ el["changePercent24Hr"] }}</td>
-      <td>{{ el["rank"] }}</td>
-
-    </tr>
-    {% endfor %}
   </table>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+ <script>
+    $.ajax({
+      url: "/operations",
+      type: "get",
+      data: {},
+      success: function(response) {
+        $("#place_for_operations").html(response);
+      },
+      error: function(xhr) {
+        //Do Something to handle error
+      }
+    });
+
+</script>
+
+<script>
+$("#search_input").keyup(function(){
+    var text = $(this).val();
+
+    $.ajax({
+      url: "/operations",
+      type: "get",
+      data: {search_text: text},
+      success: function(response) {
+        $("#place_for_operations").html(response);
+      },
+      error: function(xhr) {
+        //Do Something to handle error
+      }
+    });
+});
+</script>
 
 </body>
 </html>

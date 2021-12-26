@@ -13,9 +13,19 @@ db.add_user(name)
 
 @app.route('/')
 def main():
-    currencies = api.get_currencies()
+    return render_template("Main.html")
 
-    return render_template("Main.html", currencies=currencies)
+
+@app.route('/operations')
+def operations():
+    text = request.args.get('search_text')
+    print(text)
+    currencies = api.get_currencies()["data"]
+    if text:
+        text = text.lower()
+        currencies = list(filter(lambda el: text in el["name"].lower() or text in el["symbol"].lower(), currencies))
+
+    return render_template("operations.html", currencies=currencies)
 
 
 @app.route('/graph/<string:id>', methods=["GET", "POST"])

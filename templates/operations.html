@@ -1,0 +1,16 @@
+<tr>
+  <th class="w3-bottombar">Валюта</th>
+  <th class="w3-bottombar">Обозначение</th>
+  <th class="w3-bottombar">Цена(USD)</th>
+  <th class="w3-bottombar">Изм.(24ч)</th>
+  <th class="w3-bottombar">Ранг</th>
+</tr>
+{% for el in currencies %}
+<tr>
+  <td><a href="/graph/{{ el["id"]}}">{{ el["name"]}}</a></td>
+  <td>{{ el["symbol"] }}</td>
+  <td>{{ el["priceUsd"] }}</td>
+  <td>{{ el["changePercent24Hr"] }}</td>
+  <td>{{ el["rank"] }}</td>
+</tr>
+{% endfor %}
