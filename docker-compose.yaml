@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  neo4j:
+    image: neo4j:latest
+    environment:
+      NEO4J_AUTH: none
+    ports:
+      - "7687:7687"
+
+  web-service:
+    build: .
+    restart: always

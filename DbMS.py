@@ -3,7 +3,7 @@ import time
 
 
 class DbMS:
-    def __init__(self, uri="bolt://localhost:7687", user="neo4j", password="10122000"):
+    def __init__(self, uri="bolt://host.docker.internal:7687", user="neo4j", password="10122000"):
         self.driver = GraphDatabase.driver(uri, auth=(user, password))
 
     def __del__(self):
