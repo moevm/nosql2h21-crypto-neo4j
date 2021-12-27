@@ -51,7 +51,19 @@ class DbMS:
         self._make_query(query)
 
     def export_data(self):
-        query = "MATCH (n) RETURN n"
+        query = "CALL apoc.export.json.all('export.json', {})"
+        return self._make_query(query)
+
+    def import_data(self, filename):
+        query = "CALL apoc.import.json('{0}', {1})".format(filename, '{}')
+        return self._make_query(query)
+
+    def DELETE_ALL_RELATIONSHIPS(self):
+        query = "MATCH (n)-[r]->(m) DELETE r,n,m"
+        return self._make_query(query)
+
+    def DELETE_NODES(self):
+        query = "MATCH (n) DELETE n"
         return self._make_query(query)
 
     def get_history(self, name):

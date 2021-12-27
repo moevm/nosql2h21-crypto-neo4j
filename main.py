@@ -1,4 +1,6 @@
-from flask import Flask, render_template, request, redirect
+import os
+
+from flask import Flask, render_template, request, send_from_directory, current_app, send_file, redirect
 from DbMS import DbMS
 from api import API
 
@@ -49,7 +51,7 @@ def graph(id):
     return render_template("Trends.html", curr=curr)
 
 
-@app.route('/balance')
+@app.route('/balance', methods=['GET'])
 def balance():
     data = db.get_portfolio(name)
     return render_template("balance.html", data=data)
@@ -59,6 +61,25 @@ def balance():
 def history():
     operations = db.get_history(name)
     return render_template("History.html", operations=operations)
+
+
+def balanceImport():
+    file = request.files['upload']
+    file.save(os.path.join('C:/Users/denis/.Neo4jDesktop/relate-data/dbmss/dbms-e29f02ea-8f38-40ef-ab41-41aba2ecb2d5', file.filename))
+
+    db.DELETE_ALL_RELATIONSHIPS()
+    db.DELETE_NODES()
+
+    db.import_data(file.filename)
+    return render_template("Main.html")
+
+
+@app.route('/download')
+def downloadFile():
+    data = db.export_data()
+    print(data)
+    path = "C:/Users/denis/.Neo4jDesktop/relate-data/dbmss/dbms-e29f02ea-8f38-40ef-ab41-41aba2ecb2d5" + "/export.json"
+    return send_file(path, as_attachment=True)
 
 
 if __name__ == '__main__':
