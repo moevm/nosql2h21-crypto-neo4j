@@ -63,6 +63,7 @@ def history():
     return render_template("History.html", operations=operations)
 
 
+@app.route('/balance', methods=['POST'])
 def balanceImport():
     file = request.files['upload']
     file.save(os.path.join('C:/Users/denis/.Neo4jDesktop/relate-data/dbmss/dbms-e29f02ea-8f38-40ef-ab41-41aba2ecb2d5', file.filename))
