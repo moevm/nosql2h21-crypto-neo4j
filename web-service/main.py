@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, request, send_from_directory, current_app, send_file, redirect
+from flask import Flask, render_template, request, send_file, redirect
 from DbMS import DbMS
 from api import API
 
@@ -66,7 +66,8 @@ def history():
 @app.route('/balance', methods=['POST'])
 def balanceImport():
     file = request.files['upload']
-    file.save(os.path.join('C:/Users/denis/.Neo4jDesktop/relate-data/dbmss/dbms-e29f02ea-8f38-40ef-ab41-41aba2ecb2d5', file.filename))
+    file.save(os.path.join('C:/Users/denis/.Neo4jDesktop/relate-data/dbmss/dbms-e29f02ea-8f38-40ef-ab41-41aba2ecb2d5',
+                           file.filename))
 
     db.DELETE_ALL_RELATIONSHIPS()
     db.DELETE_NODES()
@@ -84,4 +85,4 @@ def downloadFile():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="localhost", debug=True)
